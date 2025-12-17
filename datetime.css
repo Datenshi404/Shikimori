@@ -1,19 +1,21 @@
 /*
- * History Dates (Clean ISO Fix)
- * Shikimori.org – CSS Theme
+ * History Dates — HH:MM only
+ * Shikimori.org CSS
  *
  * Format:
- *  DD мес YYYY   HH:MM:SS
+ *  DD мес YYYY   HH:MM
  *
+ * No JS. Stable.
  * MIT License
  */
+
+/* ===== БАЗА ===== */
 
 .b-user_history-line .date {
   font-size: 0;
   white-space: nowrap;
 }
 
-/* Общие стили */
 .b-user_history-line .date::before,
 .b-user_history-line .date::after {
   display: inline-block;
@@ -26,16 +28,16 @@
 /* ===== ДАТА ===== */
 
 .b-user_history-line .date::before {
-  width: 80px;              /* под "17 дек 2025" */
+  width: 80px;        /* "17 дек 2025" */
   margin-right: 12px;
 }
 
-/* ===== ВРЕМЯ ===== */
+/* ===== ВРЕМЯ (HH:MM) ===== */
 
 .b-user_history-line .date::after {
   content: attr(datetime);
-  width: 56px;              /* строго под HH:MM:SS */
-  text-indent: -11ch;       /* обрезаем всё ДО времени */
+  width: 5ch;         /* РОВНО под HH:MM */
+  text-indent: -11ch; /* Сдвиг до начала времени */
 }
 
 /* ===== ДНИ ===== */
