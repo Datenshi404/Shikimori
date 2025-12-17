@@ -1,130 +1,102 @@
 /*
- * History Dates (Fixed)
+ * History Dates (Clean ISO Fix)
  * Shikimori.org – CSS Theme
  *
- * Отображает дату и время активности в формате:
- *  DD мес YYYY  HH:MM:SS
- *
- * Совместимо с Chromium / Firefox
+ * Format:
+ *  DD мес YYYY   HH:MM:SS
  *
  * MIT License
- * Original idea: kaur (2017)
- * Fixes & improvements: you
  */
 
-/* =========================
-   БАЗОВАЯ НАСТРОЙКА
-   ========================= */
-
 .b-user_history-line .date {
-  font-size: 0;              /* Скрываем оригинальный текст */
+  font-size: 0;
   white-space: nowrap;
 }
 
-/* Общие стили псевдоэлементов */
+/* Общие стили */
 .b-user_history-line .date::before,
 .b-user_history-line .date::after {
   display: inline-block;
-  vertical-align: top;
   font-family: monospace;
   font-size: 12px;
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
 }
 
-/* =========================
-   ДАТА
-   ========================= */
+/* ===== ДАТА ===== */
 
 .b-user_history-line .date::before {
-  position: relative;
-  width: 72px;               /* Ширина блока даты */
-  margin-right: 10px;        /* Отступ между датой и временем */
-  z-index: 1;
+  width: 80px;              /* под "17 дек 2025" */
+  margin-right: 12px;
 }
 
-/* =========================
-   ВРЕМЯ
-   ========================= */
+/* ===== ВРЕМЯ ===== */
 
 .b-user_history-line .date::after {
-  content: attr(datetime);   /* Полная строка datetime */
-  width: 70px;               /* ДОСТАТОЧНО для HH:MM:SS */
-  text-indent: -72px;        /* Сдвиг на длину даты */
+  content: attr(datetime);
+  width: 56px;              /* строго под HH:MM:SS */
+  text-indent: -11ch;       /* обрезаем всё ДО времени */
 }
 
-/* =========================
-   ДНИ
-   ========================= */
+/* ===== ДНИ ===== */
 
-.b-user_history-line .date[datetime*='-01T']::before{--HD-day:'01';}
-.b-user_history-line .date[datetime*='-02T']::before{--HD-day:'02';}
-.b-user_history-line .date[datetime*='-03T']::before{--HD-day:'03';}
-.b-user_history-line .date[datetime*='-04T']::before{--HD-day:'04';}
-.b-user_history-line .date[datetime*='-05T']::before{--HD-day:'05';}
-.b-user_history-line .date[datetime*='-06T']::before{--HD-day:'06';}
-.b-user_history-line .date[datetime*='-07T']::before{--HD-day:'07';}
-.b-user_history-line .date[datetime*='-08T']::before{--HD-day:'08';}
-.b-user_history-line .date[datetime*='-09T']::before{--HD-day:'09';}
-.b-user_history-line .date[datetime*='-10T']::before{--HD-day:'10';}
-.b-user_history-line .date[datetime*='-11T']::before{--HD-day:'11';}
-.b-user_history-line .date[datetime*='-12T']::before{--HD-day:'12';}
-.b-user_history-line .date[datetime*='-13T']::before{--HD-day:'13';}
-.b-user_history-line .date[datetime*='-14T']::before{--HD-day:'14';}
-.b-user_history-line .date[datetime*='-15T']::before{--HD-day:'15';}
-.b-user_history-line .date[datetime*='-16T']::before{--HD-day:'16';}
-.b-user_history-line .date[datetime*='-17T']::before{--HD-day:'17';}
-.b-user_history-line .date[datetime*='-18T']::before{--HD-day:'18';}
-.b-user_history-line .date[datetime*='-19T']::before{--HD-day:'19';}
-.b-user_history-line .date[datetime*='-20T']::before{--HD-day:'20';}
-.b-user_history-line .date[datetime*='-21T']::before{--HD-day:'21';}
-.b-user_history-line .date[datetime*='-22T']::before{--HD-day:'22';}
-.b-user_history-line .date[datetime*='-23T']::before{--HD-day:'23';}
-.b-user_history-line .date[datetime*='-24T']::before{--HD-day:'24';}
-.b-user_history-line .date[datetime*='-25T']::before{--HD-day:'25';}
-.b-user_history-line .date[datetime*='-26T']::before{--HD-day:'26';}
-.b-user_history-line .date[datetime*='-27T']::before{--HD-day:'27';}
-.b-user_history-line .date[datetime*='-28T']::before{--HD-day:'28';}
-.b-user_history-line .date[datetime*='-29T']::before{--HD-day:'29';}
-.b-user_history-line .date[datetime*='-30T']::before{--HD-day:'30';}
-.b-user_history-line .date[datetime*='-31T']::before{--HD-day:'31';}
+.b-user_history-line .date[datetime*='-01T']::before{--d:'01';}
+.b-user_history-line .date[datetime*='-02T']::before{--d:'02';}
+.b-user_history-line .date[datetime*='-03T']::before{--d:'03';}
+.b-user_history-line .date[datetime*='-04T']::before{--d:'04';}
+.b-user_history-line .date[datetime*='-05T']::before{--d:'05';}
+.b-user_history-line .date[datetime*='-06T']::before{--d:'06';}
+.b-user_history-line .date[datetime*='-07T']::before{--d:'07';}
+.b-user_history-line .date[datetime*='-08T']::before{--d:'08';}
+.b-user_history-line .date[datetime*='-09T']::before{--d:'09';}
+.b-user_history-line .date[datetime*='-10T']::before{--d:'10';}
+.b-user_history-line .date[datetime*='-11T']::before{--d:'11';}
+.b-user_history-line .date[datetime*='-12T']::before{--d:'12';}
+.b-user_history-line .date[datetime*='-13T']::before{--d:'13';}
+.b-user_history-line .date[datetime*='-14T']::before{--d:'14';}
+.b-user_history-line .date[datetime*='-15T']::before{--d:'15';}
+.b-user_history-line .date[datetime*='-16T']::before{--d:'16';}
+.b-user_history-line .date[datetime*='-17T']::before{--d:'17';}
+.b-user_history-line .date[datetime*='-18T']::before{--d:'18';}
+.b-user_history-line .date[datetime*='-19T']::before{--d:'19';}
+.b-user_history-line .date[datetime*='-20T']::before{--d:'20';}
+.b-user_history-line .date[datetime*='-21T']::before{--d:'21';}
+.b-user_history-line .date[datetime*='-22T']::before{--d:'22';}
+.b-user_history-line .date[datetime*='-23T']::before{--d:'23';}
+.b-user_history-line .date[datetime*='-24T']::before{--d:'24';}
+.b-user_history-line .date[datetime*='-25T']::before{--d:'25';}
+.b-user_history-line .date[datetime*='-26T']::before{--d:'26';}
+.b-user_history-line .date[datetime*='-27T']::before{--d:'27';}
+.b-user_history-line .date[datetime*='-28T']::before{--d:'28';}
+.b-user_history-line .date[datetime*='-29T']::before{--d:'29';}
+.b-user_history-line .date[datetime*='-30T']::before{--d:'30';}
+.b-user_history-line .date[datetime*='-31T']::before{--d:'31';}
 
-/* =========================
-   МЕСЯЦЫ
-   ========================= */
+/* ===== МЕСЯЦЫ ===== */
 
-.b-user_history-line .date[datetime*='-01-']::before{--HD-month:'янв';}
-.b-user_history-line .date[datetime*='-02-']::before{--HD-month:'фев';}
-.b-user_history-line .date[datetime*='-03-']::before{--HD-month:'мар';}
-.b-user_history-line .date[datetime*='-04-']::before{--HD-month:'апр';}
-.b-user_history-line .date[datetime*='-05-']::before{--HD-month:'май';}
-.b-user_history-line .date[datetime*='-06-']::before{--HD-month:'июн';}
-.b-user_history-line .date[datetime*='-07-']::before{--HD-month:'июл';}
-.b-user_history-line .date[datetime*='-08-']::before{--HD-month:'авг';}
-.b-user_history-line .date[datetime*='-09-']::before{--HD-month:'сен';}
-.b-user_history-line .date[datetime*='-10-']::before{--HD-month:'окт';}
-.b-user_history-line .date[datetime*='-11-']::before{--HD-month:'ноя';}
-.b-user_history-line .date[datetime*='-12-']::before{--HD-month:'дек';}
+.b-user_history-line .date[datetime*='-01-']::before{--m:'янв';}
+.b-user_history-line .date[datetime*='-02-']::before{--m:'фев';}
+.b-user_history-line .date[datetime*='-03-']::before{--m:'мар';}
+.b-user_history-line .date[datetime*='-04-']::before{--m:'апр';}
+.b-user_history-line .date[datetime*='-05-']::before{--m:'май';}
+.b-user_history-line .date[datetime*='-06-']::before{--m:'июн';}
+.b-user_history-line .date[datetime*='-07-']::before{--m:'июл';}
+.b-user_history-line .date[datetime*='-08-']::before{--m:'авг';}
+.b-user_history-line .date[datetime*='-09-']::before{--m:'сен';}
+.b-user_history-line .date[datetime*='-10-']::before{--m:'окт';}
+.b-user_history-line .date[datetime*='-11-']::before{--m:'ноя';}
+.b-user_history-line .date[datetime*='-12-']::before{--m:'дек';}
 
-/* =========================
-   СОБИРАЕМ ДАТУ
-   ========================= */
+/* ===== СБОРКА ДАТЫ ===== */
 
 .b-user_history-line .date::before {
-  content: var(--HD-day) " " var(--HD-month) " " attr(datetime);
+  content: var(--d) " " var(--m) " " attr(datetime);
 }
 
-/* =========================
-   FIREFOX FIX
-   ========================= */
+/* ===== FIREFOX ===== */
 
 @-moz-document url-prefix() {
-  .b-user_history-line .date::before {
-    width: 78px;
-  }
-
   .b-user_history-line .date::after {
-    width: 70px;
-    text-indent: -78px;
+    text-indent: -11ch;
   }
 }
