@@ -1,0 +1,67 @@
+/*
+ * History Dates — HH:MM only
+ * Shikimori.org CSS Theme
+ *
+ * Format:
+ *   YYYY-MM-DD   HH:MM   (визуально обрезано)
+ *
+ * Notes:
+ * - Без JS (Shikimori запрещает)
+ * - Стабильно работает с datetime ISO-8601
+ * - Без секунд и timezone
+ *
+ * MIT License
+ */
+
+/* =========================================================
+   БАЗОВЫЙ ЭЛЕМЕНТ
+   ========================================================= */
+
+.b-user_history-line time.date {
+  font-size: 0 !important;     /* скрываем оригинальный текст */
+  white-space: nowrap;
+}
+
+/* =========================================================
+   ОБЩИЕ СТИЛИ ПСЕВДОЭЛЕМЕНТОВ
+   ========================================================= */
+
+.b-user_history-line time.date::before,
+.b-user_history-line time.date::after {
+  display: inline-block;
+  vertical-align: top;
+  font-family: monospace;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* =========================================================
+   ДАТА (левая часть)
+   ========================================================= */
+
+.b-user_history-line time.date::before {
+  content: attr(datetime); /* ISO-строка, обрезается шириной */
+  width: 10ch;             /* хватает под YYYY-MM-DD */
+  margin-right: 12px;
+}
+
+/* =========================================================
+   ВРЕМЯ (HH:MM)
+   ========================================================= */
+
+.b-user_history-line time.date::after {
+  content: attr(datetime);
+  width: 5ch;              /* РОВНО HH:MM */
+  text-indent: -11ch;      /* сдвиг к началу времени */
+}
+
+/* =========================================================
+   FIREFOX FIX
+   ========================================================= */
+
+@-moz-document url-prefix() {
+  .b-user_history-line time.date::after {
+    text-indent: -11ch;
+  }
+}
