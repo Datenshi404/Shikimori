@@ -1,0 +1,63 @@
+/* === SHIKIMORI YEAR FILTER FIX === */
+
+/* Контейнер фильтра годов */
+.b-filters .filter-years,
+.b-filters .year-filter,
+.b-filters [data-filter="year"] {
+  display: block !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Сетка годов */
+.b-filters .year-filter ul,
+.b-filters .filter-years ul {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 6px;
+  padding: 8px;
+}
+
+/* Элемент года */
+.b-filters .year-filter li,
+.b-filters .filter-years li {
+  list-style: none;
+}
+
+/* Кнопка года */
+.b-filters .year-filter a,
+.b-filters .filter-years a {
+  display: block;
+  padding: 6px 0;
+  text-align: center;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  color: #ddd !important;
+  font-size: 13px;
+  transition: all 0.15s ease;
+}
+
+/* Hover */
+.b-filters .year-filter a:hover {
+  background: rgba(138,43,226,0.35);
+  color: #fff !important;
+}
+
+/* Активный год */
+.b-filters .year-filter .selected a,
+.b-filters .year-filter a.selected {
+  background: linear-gradient(135deg, #7b2cff, #00ffd5);
+  color: #000 !important;
+  font-weight: 600;
+}
+
+/* Убираем тупые стрелки / dropdown */
+.b-filters .filter-years .arrow,
+.b-filters .year-filter .arrow {
+  display: none !important;
+}
+
+/* Компактнее весь блок фильтров */
+.b-filters {
+  padding-bottom: 12px;
+}
